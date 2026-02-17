@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { createChart } from "lightweight-charts";
+import { createChart, CandlestickSeries } from "lightweight-charts";
 
 export default function Chart() {
   const containerRef = useRef(null);
@@ -10,7 +10,7 @@ export default function Chart() {
       height: 500,
     });
 
-    const candlestickSeries = chart.addCandlestickSeries();
+    const candlestickSeries = chart.addSeries(CandlestickSeries);
 
     candlestickSeries.setData([
       {
