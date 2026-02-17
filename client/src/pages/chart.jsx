@@ -5,25 +5,36 @@ export default function Chart() {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     const chart = createChart(containerRef.current, {
-      width: 800,
-      height: 500,
+      width: containerRef.current.clientWidth,
+      height: containerRef.current.clientHeight,
     });
 
-    const candlestickSeries = chart.addSeries(CandlestickSeries);
+    const series = chart.addSeries(CandlestickSeries);
 
-    candlestickSeries.setData([
-      {
-        time: "2018-12-31",
-        open: 109.87,
-        high: 114.69,
-        low: 85.66,
-        close: 111.26,
-      },
-    ]);
+    series.setData([]);
 
-    return () => chart.remove();
+    const handleResize = () => {
+      chart.applyOptions({
+        width: containerRef.current.clientWidth,
+        height: containerRef.current.clientHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      chart.remove();
+    };
   }, []);
 
-  return <div ref={containerRef} />;
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100vw", height: "100vh" }}
+    />
+  );
 }
