@@ -1,40 +1,42 @@
-import { useEffect, useRef } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { createChart, CandlestickSeries } from "lightweight-charts";
 
 export default function Chart() {
-  const containerRef = useRef(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+  const fetchData = async () => {
+    setError(null);
+    setLoading(true);
+    const response = await fetch("https://core-trade-two.vercel.app/get_current_price");
+    try {
+        if (!response.ok) {
+      console.log("an error occured fetching data")
+    }
+    const json_res = response.json();
+    setData(json_res)
+    } catch (err) {
+      console.log("an error occured")
+    } finally {
+      setLoading(false);
+    }
+  }
 
-    const chart = createChart(containerRef.current, {
-      width: containerRef.current.clientWidth,
-      height: containerRef.current.clientHeight,
-    });
+  if (loading) {
+    <p>Loading Data....</p>
+  }
 
-    const series = chart.addSeries(CandlestickSeries);
-
-    series.setData([]);
-
-    const handleResize = () => {
-      chart.applyOptions({
-        width: containerRef.current.clientWidth,
-        height: containerRef.current.clientHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      chart.remove();
-    };
-  }, []);
-
+  if (error) {
+    <p>{error}</p>
+  }
   return (
-    <div
-      ref={containerRef}
-      style={{ width: "100vw", height: "100vh" }}
-    />
+    <div>
+      <p>Test Endpoint</p>
+      <button>Hit endpoint</button>
+      {data && (
+        <p>{data}</p>
+      )}
+    </div>
   );
 }
