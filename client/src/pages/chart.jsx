@@ -18,6 +18,7 @@ export default function Chart() {
     setData(json_res)
     } catch (err) {
       console.log("an error occured")
+      setError("An error occured:", err)
     } finally {
       setLoading(false);
     }
@@ -30,13 +31,15 @@ export default function Chart() {
   if (error) {
     return <p>{error}</p>
   }
-  return (
-    <div>
-      <p>Test Endpoint</p>
-      <button onClick={fetchData}>Hit endpoint</button>
-      {data && (
-        <p>{JSON.stringify(data)}</p>
-      )}
-    </div>
+  if (!loading && !error) {
+    return (
+      <div>
+        <p>Test Endpoint</p>
+        <button onClick={fetchData}>Hit endpoint</button>
+        {data && (
+          <p>{JSON.stringify(data)}</p>
+        )}
+      </div>
   );
+  }
 }
