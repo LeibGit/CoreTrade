@@ -18,7 +18,7 @@ export default function Chart() {
     setData(json_res)
     } catch (err) {
       console.log("an error occured")
-      setError("An error occured:", err)
+      setError("An error occured, CHECK CHROME TOOLS TO INSPECT")
     } finally {
       setLoading(false);
     }
