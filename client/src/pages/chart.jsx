@@ -14,7 +14,7 @@ export default function Chart() {
         if (!response.ok) {
       console.log("an error occured fetching data")
     }
-    const json_res = response.json();
+    const json_res = await response.json();
     setData(json_res)
     } catch (err) {
       console.log("an error occured")
@@ -24,18 +24,18 @@ export default function Chart() {
   }
 
   if (loading) {
-    <p>Loading Data....</p>
+    return <p>Loading Data....</p>
   }
 
   if (error) {
-    <p>{error}</p>
+    return <p>{error}</p>
   }
   return (
     <div>
       <p>Test Endpoint</p>
-      <button>Hit endpoint</button>
+      <button onClick={fetchData}>Hit endpoint</button>
       {data && (
-        <p>{data}</p>
+        <p>{JSON.stringify(data)}</p>
       )}
     </div>
   );
