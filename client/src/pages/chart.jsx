@@ -9,9 +9,9 @@ export default function Chart() {
   const fetchData = async () => {
     setError(null);
     setLoading(true);
-    const response = await fetch("https://coretrade.onrender.com/get_current_price");
     try {
-        if (!response.ok) {
+      const response = await fetch("https://coretrade.onrender.com/get_current_price");
+      if (!response.ok) {
       console.log("an error occured fetching data")
     }
     const json_res = await response.json();
