@@ -16,6 +16,7 @@ app.include_router(options_pricing.router)
 
 origins = [
     "https://core-trade-two.vercel.app/",
+    "https://coretrade.onrender.com/"
 ]
 
 app.add_middleware(
