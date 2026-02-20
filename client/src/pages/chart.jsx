@@ -24,7 +24,7 @@ export default function Chart() {
     }
   }
 
-  if (loading) {
+  if (loading && !data) {
     return <p>Loading Data....</p>
   }
 
