@@ -1,6 +1,13 @@
-.styling {
+body {
     background-color: rgb(64, 63, 63);
+    justify-content: center;
+    align-items: center;
+}
+
+.styling {
     color: white;
+    justify-content: center;
+    align-items: center;
 }
 
 .error {

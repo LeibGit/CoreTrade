@@ -49,7 +49,9 @@ export default function Chart() {
         </button>
       )}
       
-      {data && <p>{JSON.stringify(data)} - Leib</p>}
+      {data && 
+        <p>{JSON.stringify(data)}</p>
+      } 
     </div>
   );
 }
