@@ -32,13 +32,13 @@ export default function Chart() {
   if (loading && !data) {
   return (
     <div className="styling">
-      <p className="loading-text">Loading message for wife… 💌</p>
+      <p className="loading-text">Loading message</p>
     </div>
   );
 }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p className="error">{error}</p>;
   }
 
   return (
@@ -48,7 +48,7 @@ export default function Chart() {
           View Message
         </button>
       )}
-
+      
       {data && <p>{JSON.stringify(data)} - Leib</p>}
     </div>
   );
