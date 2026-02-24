@@ -19,4 +19,4 @@ headers = {
 async def get_current_price():
     response = requests.get(url, headers=headers)
     #return response.json()
-    return "I love you don't be sad"
+    return "I love you don't be sad ❤️"
