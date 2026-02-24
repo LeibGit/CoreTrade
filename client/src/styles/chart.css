@@ -1,23 +1,21 @@
 /* chart.css */
 
 .styling {
-  min-height: 100vh;          /* full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;    /* vertical center */
-  align-items: center;        /* horizontal center */
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
   text-align: center;
   gap: 1rem;
 }
 
-/* Optional: make the button look cleaner */
 .styling button {
   padding: 10px 18px;
   font-size: 16px;
   cursor: pointer;
 }
 
-/* Optional: constrain the data text */
 .styling p {
   max-width: 600px;
   word-break: break-word;
