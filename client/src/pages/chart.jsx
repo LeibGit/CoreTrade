@@ -1,6 +1,6 @@
 import { use, useEffect, useRef, useState } from "react";
 import { createChart, CandlestickSeries } from "lightweight-charts";
-import "./styles/chart.css"
+import "../styles/chart.css"
 
 
 export default function Chart() {
