@@ -30,8 +30,12 @@ export default function Chart() {
   };
 
   if (loading && !data) {
-    return <p>Loading message for wife....</p>;
-  }
+  return (
+    <div className="styling">
+      <p className="loading-text">Loading message for wife… 💌</p>
+    </div>
+  );
+}
 
   if (error) {
     return <p>{error}</p>;
