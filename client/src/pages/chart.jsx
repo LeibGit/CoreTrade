@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createChart, CandlestickSeries } from "lightweight-charts";
 import "../styles/chart.css"
 
@@ -36,7 +36,7 @@ export default function Chart() {
   if (!loading && !error) {
     return (
       <div className="styling">
-        <button onClick={fetchData}>Hit endpoint</button>
+        <button onClick={fetchData}>View Message</button>
         {data && (
           <p>{JSON.stringify(data)}</p>
         )}
