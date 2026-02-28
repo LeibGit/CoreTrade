@@ -7,7 +7,7 @@ router = APIRouter()
 ALPACA_KEY = os.environ.get("ALPACA_KEY")
 ALPACA_SECRET = os.environ.get("ALPACA_SECRET")
 
-url = "https://data.alpaca.markets/v2/stocks/{symbol}/quotes/latest"
+url = "https://data.alpaca.markets/v2/stocks/{AAPL}/quotes/latest"
 
 headers = {
     "accept": "application/json",
